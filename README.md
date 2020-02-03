@@ -1,4 +1,4 @@
-This project is the assignment 4 for CGI future talent. It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an implementation to assignment 4 for CGI future talent 2020. It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## About
 
