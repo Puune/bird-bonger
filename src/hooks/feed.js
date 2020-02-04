@@ -8,7 +8,9 @@ const useFeed = () => {
   const [observations, setObservations] = useState([]);
 
   const put = (obs) => {
-    setObservations(observations.concat(obs));
+    observations!==null 
+      ? setObservations(observations.concat(obs))
+      : setObservations([obs])
   }
 
   const set = (obs) => {    

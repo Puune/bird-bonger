@@ -8,7 +8,7 @@ const generateObservations = () => {
   const observations =
   [
     {
-      "id": 1,
+      "id": "1",
       "timestamp": genVariedTime(),
       "species": "Tit",
       "rarity": "rare",
@@ -16,7 +16,7 @@ const generateObservations = () => {
       "date": genVariedTime()
     },
     {
-      "id": 2,
+      "id": "2",
       "timestamp": genVariedTime(),
       "species": "Kingfisher",
       "rarity": "extremely rare",
@@ -24,7 +24,7 @@ const generateObservations = () => {
       "date": genVariedTime()  
     },
     {
-      "id": 3,
+      "id": "3",
       "timestamp": genVariedTime(),
       "species": "Labrador retriever",
       "rarity": "common",

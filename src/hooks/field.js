@@ -9,7 +9,7 @@ const useField = (type) => {
   const set = (input) =>  {
     setField(input);
   }
-
+  
   const event = (event) => {
     setField(event.target.value);
   }

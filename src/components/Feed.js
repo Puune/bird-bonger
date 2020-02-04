@@ -12,7 +12,14 @@ Parameters:
 */
 const Feed = (props) => {
   const feed = props.useFeed;
-    
+
+  if(feed.observations===null){
+    return(
+      <div>
+        
+      </div>
+    )
+  }
 
   const listify = (observation) => {
     return(

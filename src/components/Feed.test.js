@@ -29,6 +29,14 @@ describe('<Feed />', ()=> {
     expect(feed).toBeInTheDocument();
   })
 
+  test('Null list doesnt break app', () =>{
+    act(()=> {
+      result.current.set(null);
+    })
+    const feed = queryByTitle(component.container, 'feed');
+    expect(feed).toBeInTheDocument();
+  })
+
   //test that all observations render
   test('renders all members given to it', () => {
     expect(component.container).toHaveTextContent('Tit');

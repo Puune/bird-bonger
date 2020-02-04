@@ -1,4 +1,5 @@
 import React from 'react';
+import util from '../util/util'
 
 /*Const: Observation
   
@@ -62,7 +63,7 @@ const Observation = (props) => {
     title
   */
   const getTitle = (id, rarity, species) => {
-    id = id !== null
+    id = !id.includes('local')
       ? id
       : 'waiting for connection'
 
@@ -86,16 +87,12 @@ const Observation = (props) => {
     return <h2 title='title'>{id + ': ' + article + ' ' + rarity + ' ' + species + ' ' + jargon[random]}</h2>
   }
 
-  const convertDate = (date) => {
-    return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDay() + ', ' +
-      date.getHours() + ':' + date.getMinutes();
-  }
-
   return( 
     <div>
       {getTitle(observation.id, observation.rarity, observation.species)}
       {getExcerpt(observation.note)}
-      {convertDate(observation.date)} --- {convertDate(observation.timestamp)}
+      {util.formatDate(observation.date)} <br/>
+      {util.formatDate(observation.timestamp)}
     </div>
   )
 }

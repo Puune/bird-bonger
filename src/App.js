@@ -6,10 +6,11 @@ import ObservationForm from './components/ObservationForm';
 
 function App() {
 
-  const observations = testHelper.generateObservations();
+  //const observations = testHelper.generateObservations();
   const feed = useFeed();
 
   useEffect(()=> {
+    const observations = JSON.parse(window.localStorage.getItem('localObs'));
     feed.set(observations);
   },[])
 

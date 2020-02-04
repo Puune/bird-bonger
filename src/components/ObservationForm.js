@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useField from '../hooks/field';
 
 /*Const: ObservationForm
@@ -27,19 +27,31 @@ const ObservationForm = (props) => {
   const f_rarity = useField('rarity');
   const f_note = useField('note');
   const f_date = useField('date');
+  const f_time = useField('timne');
   
   const submit = (event) => {
     event.preventDefault();
-    let timestamp = new Date();
-    let date = new Date(f_date.field);
-    feed.put({
-      id: null,
+    let timestamp = new Date().toJSON();
+    let date = new Date(f_date.field + ', ' + f_time.field).toJSON();
+
+    //create observation object
+    const observation = {
+      id: "local" + (Math.random() * 10000),
       timestamp,
       "species": f_species.field,
       "rarity": f_rarity.field,
       "note": f_note.field,
       "date": date
-    })
+    }
+    //put it in state
+    feed.put(observation)
+
+    //store to localstorage
+    let oldLocal = JSON.parse(window.localStorage.getItem('localObs'));
+    oldLocal = oldLocal!==null 
+      ? oldLocal.concat(observation)
+      : [observation]
+    window.localStorage.setItem('localObs',JSON.stringify(oldLocal));
   }
 
   return(
@@ -61,6 +73,10 @@ const ObservationForm = (props) => {
         <label>
           Date:<input name={f_date.type} type="date" 
             onChange={f_date.event} value={f_date.field} required/><br/>
+        </label>
+        <label>
+          Time:<input name={f_time.type} type="time"
+            onChange={f_time.event} value={f_time.field} required /><br/>
         </label>
         <button type="submit">Send</button>
       </form>
