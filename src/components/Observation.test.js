@@ -21,7 +21,7 @@ describe('<Observation />', () => {
 
   //Timestamp
   test('Renders timestamp', ()=> {
-    expect(component.container).toHaveTextContent(observation1.timestamp);
+    expect(component.container).toHaveTextContent(formatTime(observation1.timestamp));
   })
 
   //Species
@@ -42,6 +42,11 @@ describe('<Observation />', () => {
 
   //Date
   test('Renders date', ()=> {
-    expect(component.container).toHaveTextContent(observation1.date);
+    expect(component.container).toHaveTextContent(formatTime(observation1.date));
   })
 })
+
+const formatTime = (date) => {
+  return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDay() + ', ' +
+      date.getHours() + ':' + date.getMinutes();
+}
